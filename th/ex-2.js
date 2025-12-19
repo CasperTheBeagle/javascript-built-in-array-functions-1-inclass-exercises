@@ -10,18 +10,24 @@
 
 // Start coding here
 
+// function addBonusForSelectedDepartment(employeeInfo, bonus, department) {
+//   let totalPayment = 0; // ตัวแปรเก็บยอดเงินรวมที่บริษัทต้องจ่าย
+
+//   for (let employee of employeeInfo) {
+//     // เช็คว่าพนักงานคนนี้อยู่แผนกที่ระบุมาหรือไม่
+//     if (employee.department === department) {
+//       // ถาใช่: นำเงินเดือนรวมกับโบนัส แล้วบวกเข้าไปในยอดรวม
+//       totalPayment += (employee.salary + bonus);
+//     }
+//   }
+
+//   return totalPayment;
+// }
+
 function addBonusForSelectedDepartment(employeeInfo, bonus, department) {
-  let totalPayment = 0; // ตัวแปรเก็บยอดเงินรวมที่บริษัทต้องจ่าย
-
-  for (let employee of employeeInfo) {
-    // เช็คว่าพนักงานคนนี้อยู่แผนกที่ระบุมาหรือไม่
-    if (employee.department === department) {
-      // ถาใช่: นำเงินเดือนรวมกับโบนัส แล้วบวกเข้าไปในยอดรวม
-      totalPayment += (employee.salary + bonus);
-    }
-  }
-
-  return totalPayment;
+  return employeeInfo
+    .filter(emp => emp.department === department) // ขั้นที่ 1: คัดเฉพาะพนักงานในแผนกที่ระบุ
+    .reduce((total, emp) => total + emp.salary + bonus, 0); // ขั้นที่ 2: รวมเงินเดือน + โบนัส
 }
 
 const employeeInfo = [

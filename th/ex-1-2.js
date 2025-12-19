@@ -15,14 +15,20 @@ const number2 = [0, -4, -1, -5, 6, 5, 0];
 console.log(sumNegativeNumbers(number2)); // -10
 
 function sumNegativeNumbers(numbers) {
-  let sum = 0; // สร้างตัวแปรเก็บผลรวม เริ่มต้นที่ 0
-
-  for (let num of numbers) {
-    if (num < 0) {
-      // ถ้าตัวเลขน้อยกว่า 0 (ติดลบ) ให้เอามาบวกใส่ใน sum
-      sum += num;
-    }
-  }
-  
-  return sum;
+  return numbers
+    .filter(num => num < 0)           // ขั้นที่ 1: คัดเฉพาะเลขติดลบ
+    .reduce((sum, num) => sum + num, 0); // ขั้นที่ 2: นำเลขที่คัดมาบวกรวมกัน (เริ่มที่ 0)
 }
+
+// function sumNegativeNumbers(numbers) {
+//   let sum = 0; // สร้างตัวแปรเก็บผลรวม เริ่มต้นที่ 0
+
+//   for (let num of numbers) {
+//     if (num < 0) {
+//       // ถ้าตัวเลขน้อยกว่า 0 (ติดลบ) ให้เอามาบวกใส่ใน sum
+//       sum += num;
+//     }
+//   }
+  
+//   return sum;
+// }
