@@ -13,3 +13,8 @@ console.log(exponentialNumber(numbers1)); // [ 9, 25, 100, 144 ]
 
 const number2 = [0, -1, -4, -8];
 console.log(exponentialNumber(number2)); // [ 0, 1, 16, 64 ]
+
+function exponentialNumber(numbers) {
+  // ใช้ .map เพื่อนำสมาชิกทุกตัว (num) ไปยกกำลังสอง (** 2)
+  return numbers.map(num => num ** 2);
+}
